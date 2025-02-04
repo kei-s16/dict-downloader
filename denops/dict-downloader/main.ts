@@ -14,8 +14,8 @@ export const main: Entrypoint = (denops) => {
 
     async download() {
       // TODO: change var name
-      const dicts = await vars.globals.get(denops, "dicts") as Array<string>;
-      const savepath = await vars.globals.get(denops, "savepath") as string;
+      const dicts = await vars.globals.get(denops, "dict_downloader_dicts") as Array<string>;
+      const savepath = await vars.globals.get(denops, "dict_downloader_save_path") as string;
 
       try {
         dicts.forEach(async (dict) => {
@@ -29,5 +29,4 @@ export const main: Entrypoint = (denops) => {
     }
   };
 }
-
 
