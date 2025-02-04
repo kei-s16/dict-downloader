@@ -13,7 +13,6 @@ export const main: Entrypoint = (denops) => {
     },
 
     async download() {
-      // TODO: change var name
       const dicts = await vars.globals.get(denops, "dict_downloader_dicts") as Array<string>;
       const savepath = await vars.globals.get(denops, "dict_downloader_save_path") as string;
 
