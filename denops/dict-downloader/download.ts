@@ -9,7 +9,7 @@ export class DictDownloader {
      */
     async fetchDictionary(dictUrl: string, dictDir: string) : Promise<void|Error> {
       const url = new URL(dictUrl);
-      const path = this.dictDirResolver(dictDir);
+      const path = this.convertToAbsolutePath(dictDir);
       const dictName = this.getDictName(url);
 
       if (!dictName) {
@@ -46,7 +46,7 @@ export class DictDownloader {
      * @param dictDir - 保存先のパス
      * @returns 保存先パスを絶対パスに変換したもの
      */
-    dictDirResolver(dictDir: string) : String {
+    convertToAbsolutePath(dictDir: string) : String {
       const regex = /^~\//
       const path = new String(dictDir).replace(regex, `${os.homedir()}/`);
 
