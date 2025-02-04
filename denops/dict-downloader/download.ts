@@ -10,7 +10,7 @@ export class DictDownloader {
     async fetchDictionary(dictUrl: string, dictDir: string) : Promise<void|Error> {
       const url = new URL(dictUrl);
       const path = this.dictDirResolver(dictDir);
-      const dictName = this.dictNameResolver(url);
+      const dictName = this.getDictName(url);
 
       if (!dictName) {
         return new Error("渡されたURLが不正"); // TODO: fix error
@@ -63,7 +63,7 @@ export class DictDownloader {
      * @param url - 辞書のダウンロードURL
      * @returns 辞書名らしきもの
      */
-    dictNameResolver(url: URL) : string|undefined {
+    getDictName(url: URL) : string|undefined {
       return url.pathname.split("/").pop();
     }
 }
