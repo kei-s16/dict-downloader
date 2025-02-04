@@ -2,7 +2,7 @@ import os from 'node:os';
 
 export class DictDownloader {
     // TODO: add docs
-    async fetchDictionary(dictUrl: string, dictDir: string) {
+    async fetchDictionary(dictUrl: string, dictDir: string) : Promise<void> {
       const url = new URL(dictUrl);
       const path = this.dictDirResolver(dictDir);
       const dictName = this.dictNameResolver(url);
@@ -36,7 +36,7 @@ export class DictDownloader {
     };
 
     // TODO: add docs
-    dictDirResolver(dictDir: string) {
+    dictDirResolver(dictDir: string) : String {
       const regex = /^~\//
       const path = new String(dictDir).replace(regex, `${os.homedir()}/`);
 
