@@ -1,8 +1,13 @@
 import os from 'node:os';
 
 export class DictDownloader {
-    // TODO: add docs
-    async fetchDictionary(dictUrl: string, dictDir: string) : Promise<void> {
+    /**
+     * 辞書をダウンロードする
+     *
+     * @param dictUrl - ダウンロードする辞書のURL
+     * @param dictDir - 保存先のパス
+     */
+    async fetchDictionary(dictUrl: string, dictDir: string) : Promise<void|Error> {
       const url = new URL(dictUrl);
       const path = this.dictDirResolver(dictDir);
       const dictName = this.dictNameResolver(url);
@@ -35,7 +40,12 @@ export class DictDownloader {
       }
     };
 
-    // TODO: add docs
+    /**
+     * 保存先パスを絶対パスに変換する
+     *
+     * @param dictDir - 保存先のパス
+     * @returns 保存先パスを絶対パスに変換したもの
+     */
     dictDirResolver(dictDir: string) : String {
       const regex = /^~\//
       const path = new String(dictDir).replace(regex, `${os.homedir()}/`);
@@ -47,7 +57,12 @@ export class DictDownloader {
       return path;
     };
 
-    // TODO: add docs
+    /**
+     * ダウンロードURLから辞書名を取得する
+     *
+     * @param url - 辞書のダウンロードURL
+     * @returns 辞書名らしきもの
+     */
     dictNameResolver(url: URL) : string|undefined {
       return url.pathname.split("/").pop();
     }
