@@ -51,8 +51,5 @@ export class DictDownloader {
     dictNameResolver(url: URL) : string|undefined {
       return url.pathname.split("/").pop();
     }
-
-    // TODO: add docs
-    unzip() {}
 }
 
