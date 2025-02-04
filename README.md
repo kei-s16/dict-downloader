@@ -2,6 +2,9 @@
 ## about
 SKK辞書をダウンロードするプラグイン
 
+## dependency
+- [vim-denops/denops.vim](https://github.com/vim-denops/denops.vim)
+
 ## usage
 以下のグローバル変数を設定する
 
